@@ -1,0 +1,44 @@
+syntax="proto3";
+
+
+//service Greet{
+//    rpc greet (HelloRequest) returns (HelloAnwser);
+//    rpc greet2 (HelloRequest) returns (HelloAnwser);
+//}
+//
+//message HelloRequest{
+//    string hello=1;
+//}
+//
+//message HelloAnwser{
+//    string hi=1;
+//}
+
+service BookManager{
+    rpc add (Book) returns (State);
+    rpc queryByID(bookID) returns (Book);
+    rpc queryByName(Bookname) returns (BookList);
+    rpc delete(bookID) returns (State);
+}
+
+message State{
+    bool IsSuccess=1;
+}
+
+message bookID{
+    int64 bookID=1;
+}
+
+message Bookname{
+    string Bookname=1;
+}
+
+message Book{
+    int64 bookID=1;
+    string Name=2;
+}
+
+message BookList{
+    repeated Book list=1;
+}
+
